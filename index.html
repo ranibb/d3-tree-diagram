@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Corp!</title>
+</head>
+<body>
+
+  <div class="purple section">
+    <h2 class="white-text center">Corp</h2>
+  </div>
+
+  <div class="grey lighten-3 section grey-text" style="position: relative">
+    <p class="flow-text center">The Nymber ONE Company</p>
+    <a href="#modal" class="btn-floating btn-large halfway-fab purple modal-trigger">
+      <i class="material-icons">add</i>
+    </a>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h4 class="purple-text center">Add New Employee</h4>
+      <form>
+        <div class="input-field">
+          <input type="text" id="name" placeholder="Employee Name">
+        </div>
+        <div class="input-field">
+          <input type="text" id="parent" placeholder="Reports to...">
+        </div>
+        <div class="input-field">
+          <input type="text" id="department" placeholder="Department">
+        </div>
+        <div class="input-field">
+          <button class="btn purple white-text">Add Employee</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="canvas"></div>
+  </div>
+  
+  <!-- scripts -->
+  <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCZsDuIPF7YRBjdJNZiJl4i7nig29TIlX8",
+      authDomain: "d3-example-8bbff.firebaseapp.com",
+      databaseURL: "https://d3-example-8bbff.firebaseio.com",
+      projectId: "d3-example-8bbff",
+      storageBucket: "d3-example-8bbff.appspot.com",
+      messagingSenderId: "3889468187"
+    };
+    firebase.initializeApp(config);
+    const db = firebase.firestore();
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script src="index.js"></script>
+  <script src="graph.js"></script>
+</body>
+</html>
