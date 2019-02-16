@@ -19,6 +19,10 @@ const tree = d3.tree()
 // update function
 const update = (data) => {
 
+  // remove current nodes
+  graph.selectAll('.node').remove();
+  graph.selectAll('.link').remove();
+
   // get updated root Node data
   const rootNode = stratify(data);
   // console.log(rootNode);
@@ -61,6 +65,10 @@ const update = (data) => {
     .attr('stroke-width', 2)
     .attr('height', 50)
     .attr('width', d => d.data.name.length * 20) // calculate width based on length of the name
+    .attr('transform', d => {
+      var x = d.data.name.length * 10;
+      return `translate(${-x}, -31.5)`
+    })
 
   // append name text
   enterNodes.append('text')
