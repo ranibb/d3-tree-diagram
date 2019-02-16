@@ -16,12 +16,18 @@ const stratify = d3.stratify()
 const tree = d3.tree()
   .size([dims.width, dims.height])
 
+// create ordinal scale
+const colour = d3.scaleOrdinal(['#3949ab', '#00acc1', '#7cb342', '#ffb300', '#6d4c41'])
+
 // update function
 const update = (data) => {
 
   // remove current nodes
   graph.selectAll('.node').remove();
   graph.selectAll('.link').remove();
+
+  // update ordinal scale domain
+  colour.domain(data.map(item => item.department));
 
   // get updated root Node data
   const rootNode = stratify(data);
@@ -60,7 +66,8 @@ const update = (data) => {
 
   // append rects to enter nodes
   enterNodes.append('rect')
-    .attr('fill', '#aaa')
+    // apply ordinal scale to wprk out fill
+    .attr('fill', d => colour(d.data.department))
     .attr('stroke', '#555')
     .attr('stroke-width', 2)
     .attr('height', 50)
@@ -73,7 +80,7 @@ const update = (data) => {
   // append name text
   enterNodes.append('text')
     .attr('text-anchor', 'middle')
-    .attr('fill', 'black')
+    .attr('fill', 'white')
     .text(d => d.data.name)
   
 }
